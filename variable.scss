@@ -1,0 +1,208 @@
+:root {
+    --white_color: #ffffff;
+    --black_color: #000000;
+    --primary_color: #e88a68;
+    --tundora_color: #404040;
+    --emperor_color: #555555;
+    --secondary_color: ;
+    --red_color: #c40f1d;
+    --green_color: #008e58;
+    --pending_color: #f3a638;
+    --preparing_color: #54b7d3;
+    --delivered_color: #4cb64c;
+    --cancelled_color: #e3503e;
+    --requested_color: #28a745;
+    --inprogress_color: #007bff;
+    --process_color: #777777;
+    --rejected_color: #dc3545;
+    --grey_100: #f0f0f0;
+    --grey_200: #f2f2f2;
+    --grey_color: #808080;
+    --grey_300: #8e8e8e;
+    --grey_400: #d9d9d9;
+    --border_color_2: #d4d4d4;
+    --text_color_1: #2d2d2d;
+    --text_color_2: #0d0d0d;
+    --text-color_3: #333333;
+    --gradient-btn: linear-gradient(180deg, #ef8668 0%, #ea6646 100%);
+    --green-gradient-btn: linear-gradient(180deg, #008e58 0%, #005331 100%);
+    --red-gradient-btn: linear-gradient(180deg, #c40f1d 0%, #8e0a16 100%);
+    --blue-gradient-btn: linear-gradient(180deg, #00aad3 0%, #0089b2 100%);
+    --mint-green-color: #7dfb94;
+    --cindrella-pink-color: #ffc5c5;
+    --info-color: #04a5cf;
+    --people-color: #009093;
+    --accordian-item-bg: #fafafa;
+    --billable_color: #1db288;
+    --non_billable_color: #e62423;
+    --fixed_billable_color: #e62423;
+    --blue-color-badge: #5b9bd5;
+    --orange-color-badge: #ff7043;
+    --green-color-badge: #4caf50;
+    --red-color-badge: #c62828;
+    --yellow-color-badge: #ff9800;
+    --purple-color-badge: #9c27b0;
+    --transparent-color-opacity: rgba(255, 255, 255, 0.9);
+    --transparent-color: transparent;
+    --in-process-color:#FF7043;
+}
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 550px,
+    md: 767px,
+    lg: 1000px,
+    xl: 1280px,
+    xxl: 1400px,
+);
+
+// Base Font family and size
+$base-font-family: "Lato", serif;
+$base-font-size: 16px;
+$base-line-height: 1.6;
+$font-awesome-font-family: "FontAwesome";
+
+// Font Weight
+$font_weight_100: 100;
+$font_weight_200: 200;
+$font_weight_300: 300;
+$font_weight_400: 400;
+$font_weight_500: 500;
+$font_weight_600: 600;
+$font_weight_700: 700;
+$font_weight_800: 800;
+$font_weight_900: 900;
+
+$zindex-one: 1;
+$zindex-dropdown: 1000 !default;
+$zindex-sticky: 1020 !default;
+$zindex-fixed: 1030 !default;
+$zindex-offcanvas-backdrop: 1040 !default;
+$zindex-offcanvas: 1045 !default;
+$zindex-modal-backdrop: 1050 !default;
+$zindex-modal: 1055 !default;
+$zindex-popover: 1070 !default;
+$zindex-tooltip: 1080 !default;
+$zindex-toast: 1090 !default;
+
+$header-zindex: 999;
+$header-dropdown: 1210;
+$menu-zindex: 1220;
+$mobile-menu-zindex: 1230;
+$loader-zindex: 1300;
+
+// Heading font size and line height
+$h1-font-size: 22px;
+$h1-line-height: 1.18;
+$h2-font-size: 18px;
+$h2-line-height: 1.16;
+$h3-font-size: 16px;
+$h3-line-height: 1.18;
+$h4-font-size: 14px;
+$h4-line-height: 1.14;
+$h5-font-size: 13px;
+$h5-line-height: 1.15;
+$h6-font-size: 12px;
+$h6-line-height: 1.16;
+
+// Text size
+$font-size-24: 24px;
+$font-size-24-line-height: 1.667;
+$font-size-20: 20px;
+$font-size-20-line-height: 1.2;
+$font-size-18: 18px;
+$font-size-18-line-height: 1.2;
+$font-size-16: 16px;
+$font-size-16-line-height: 1.18;
+$font-size-14: 14px;
+$font-size-14-line-height: 1.14;
+$font-size-12: 12px;
+$font-size-12-line-height: 1.12;
+
+//Card Info
+$card-info-count-font-size: 36px;
+$card-info-count-line-height: 1.19;
+
+// Border Radius
+$border-radius-xl: 15px;
+$border-radius-lg: 10px;
+$border-radius-md: 5px;
+$border-radius-sm: 4px;
+$border-radius-x: 3px;
+$border-radius-2: 2px;
+$border-radius-1: 1px;
+$border-radius-0: 0px;
+
+$border-size-0: 0px;
+$border-size-1: 1px;
+$border-size-2: 2px;
+$border-size-3: 3px;
+$border-size-4: 4px;
+$border-size-5: 5px;
+$border-size-10: 10px;
+
+$border-style-solid :solid;
+$border-style-dashed: dashed;
+$border-style-dotted: dotted;
+$border-style-none: none;
+$border-style-hidden: hidden;
+
+
+// Flex Gap
+$gap-5: 5px;
+$gap-10: 10px;
+$gap-15: 15px;
+$gap-20: 20px;
+$gap-25: 25px;
+$gap-30: 30px;
+$gap-35: 35px;
+$gap-40: 40px;
+
+// box-shadow
+$box-shadow-none: none;
+$box-shadow-1: 0px 4px 4px rgba(0, 0, 0, 0.25);
+$box-shadow-2: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+$box-shadow-3: rgba(0, 0, 0, 0.15) 0px 1px 1px 0px;
+
+// header
+$header_bg: var(--white_color);
+$header-text: var(--black_color);
+$header_title_bg: var(--primary_color);
+$header_title_text: var(--white_color);
+
+// Dropdown
+$dropdown-bg: var(--white_color);
+$dropdown-bg-hover: var(--grey_100);
+$dropdown-bg-focus: var(--grey_100);
+$dropdown-border-color: var(--grey_400);
+$dropdown-border-radius: 5px;
+$dropdown-border-width: 1px solid;
+$dropdown-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+$dropdown-font-size: 14px;
+$dropdown-line-height: 1.14;
+$dropdown-text: var(--emperor_color);
+$dropdown-link: var(--emperor_color);
+
+//Opacity
+$opacity-0: 0;
+$opacity-1: 1;
+$bg-mixin-opacity: 0.3;
+
+//Gradient colors
+$gradient-orange-start: #e88a68;
+$gradient-orange-end: #ea6646;
+$gradient-red-start: #c40f1d;
+$gradient-red-end: #8e0a16;
+$gradient-green-start: #008e58;
+$gradient-green-end: #005331;
+$gradient-white-start: #ffffff2f;
+$gradient-white-end: #f6f6f6;
+$gradient-blue-start: #00aad3;
+$gradient-blue-end: #0089b2;
+$gradient-table-start: #FEFEFE;
+$gradient-table-end: #D3D3D3;
+
+//Transform
+$transform-0: 0deg;
+$transform-180: 180deg;
+$transform-360: 360deg;

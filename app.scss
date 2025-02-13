@@ -1,0 +1,66 @@
+// ***** Notes ****************** //
+//use sass command in terminal before write this command need to install globally sass in your system
+//sass --watch resources/scss/app.scss public/css/new-style.css // watch
+//sass --style=compressed resources/scss/app.scss public/css/new-style.min.css // minify
+
+@use './variable.scss';
+
+@use './bootstrap/bootstrap' with (
+    $grid-gutter-width: 30px,
+    $spacer: 16px,
+    $spacers: (
+        0: 0,
+        1: 15px,
+        2: 20px,
+        3: 30px,
+        4: 40px,
+        5: 50px
+    )
+);
+
+// unwanted we will remove after we finished our frontend work
+@use './../assets/css/datatables.min.css';
+@use '../assets/css/datatables-responsive.css';
+@use './../assets/css/bootstrap-datepicker.css';
+@use './../assets/css/bootstrap-multiselect.css';
+@use './../assets/css/bootstrap-timepicker.min.css';
+@use './../assets/css/datepicker3.css';
+@use './../assets/css/daterangepicker-bs3.css';
+@use './../assets/css/angular-datepicker.min.css';
+
+@use './../assets/css/font-awesome.css';
+@use './../assets/css/bootstrap-datetimepicker.css';
+@use './../assets/css/bootstrap-select.min.css';
+@use './../assets/css/daterangepicker.css';
+@use '../../public/css/timelog.css';
+
+
+
+
+
+@use './mixin.scss';
+@use './typography.scss';
+@use './base.scss';
+@use './tooltip.scss';
+@use './radio-checkbox.scss';
+//@use './switch.scss';
+@use './badge.scss';
+@use './form.scss';
+@use './dropdown.scss';
+@use './select-dropdown.scss';
+@use './button.scss';
+// @use './list.scss';
+@use './table.scss';
+@use './panel.scss';
+@use './tabs.scss';
+// @use './accordion.scss';
+@use './card.scss';
+@use './modal.scss';
+// @use './components/projectdetail.scss';
+@use './components/header.scss';
+@use './components/footer.scss';
+@use './components/ticketdetail.scss';
+// @use './common.scss';
+@use './components/fileupload.scss';
+@use './pages/everything.scss';
+@use './components/norecord.scss';

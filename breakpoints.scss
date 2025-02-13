@@ -1,0 +1,62 @@
+// Extra large desktop
+@use "sass:map";
+
+@use './variable.scss' as *;
+
+@mixin xxl {
+	@media (max-width: #{map.get($grid-breakpoints, xxl)}) {
+		@content;
+	}
+}
+
+@mixin xl {
+	@media (max-width: #{map.get($grid-breakpoints, xl)}) {
+		@content;
+	}
+}
+
+@mixin lg {
+	@media (max-width: #{map.get($grid-breakpoints, lg)}) {
+		@content;
+	}
+}
+
+@mixin md {
+	@media (max-width: #{map.get($grid-breakpoints, md)}) {
+		@content;
+	}
+}
+
+@mixin sm {
+	@media (max-width: #{map.get($grid-breakpoints, sm)}) {
+		@content;
+	}
+}
+
+@mixin breakpoint-between($lower, $upper) {
+	@media (min-width: ($lower + px)) and (max-width: ($upper + px)) {
+		@content;
+	}
+}
+
+// usage
+// .mydiv {
+//     @include breakpoint-between(1200, 1300){
+//         background-color: black;
+//     }
+//     @include xxl { 
+//         background-color: purple;
+//     }
+// 	@include xl { 
+//         background-color: orange;
+//     }
+// 	@include lg { 
+//         background-color: green;
+//     }
+// 	@include md { 
+//         background-color: blue;
+//     }
+// 	@include sm { 
+//         background-color: red;
+//     }
+// }
