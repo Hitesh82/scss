@@ -206,3 +206,356 @@ $gradient-table-end: #D3D3D3;
 $transform-0: 0deg;
 $transform-180: 180deg;
 $transform-360: 360deg;
+
+$colors: (
+    gray-50: #f9fafb,
+    gray-100: #f3f4f6,
+    gray-200: #e5e7eb,
+    gray-300: #d1d5db,
+    gray-400: #9ca3af,
+    gray-500: #6b7280,
+    gray-600: #4b5563,
+    gray-700: #374151,
+    gray-800: #1f2937,
+    gray-900: #111827,
+    gray-950: #030712,
+    --white: #ffffff,
+    --black: #000000,
+);
+
+:root {
+    @each $name, $value in $colors {
+        --#{$name}: #{$value};
+    }
+}
+
+:root,
+[data-color="default"] {
+    --primary: #2196f3;
+    --secondary: #0d47a1;
+    --tertiary: #90caf9;
+    --quaternary: #e3f2fd;
+    // alert
+    --success: #198754;
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --info: #0dcaf0;
+
+    --white: #ffffff;
+    --black: #000000;
+    --btn-primary-bg: var(--primary);
+    --btn-primary-color: var(--white);
+    --btn-primary-border: var(--primary);
+    --btn-primary-hover-bg: var(--secondary);
+    --btn-primary-hover-color: var(--white);
+    --btn-primary-hover-border: var(--secondary);
+}
+:root,
+[data-theme="light"] {
+    --gray-0: #ffffff;
+    --gray-50: #f1f3f4;
+    --gray-100: #e3e4e8;
+    --gray-200: #c5cad6;
+    --gray-300: #99a1b3;
+    --gray-400: #7b879e;
+    --gray-500: #6d7894;
+    --gray-600: #58627c;
+    --gray-700: #3f4654;
+    --gray-800: #353c47;
+    --gray-900: #2b303c;
+    --gray-950: #21242c;
+}
+[data-theme="dark"] {
+    --gray-0: #0f1115;
+    --gray-50: #181b20;
+    --gray-100: #20242b;
+    --gray-200: #2b3038;
+    --gray-300: #3b4350;
+    --gray-400: #4b5563;
+    --gray-500: #6b7280;
+    --gray-600: #9ca3af;
+    --gray-700: #cbd5e1;
+    --gray-800: #e5e7eb;
+    --gray-900: #f3f4f6;
+    --gray-950: #ffffff;
+}
+
+:root,
+[data-theme="light"] {
+    --background: var(--gray-0);
+    --surface: var(--gray-50);
+    --surface-two: var(--gray-100);
+    --surface-three: var(--gray-200);
+
+    --text: var(--gray-900);
+    --text-muted: var(--gray-600);
+    --text-disabled: var(--gray-400);
+
+    --border: var(--gray-200);
+    --border-light: var(--gray-100);
+}
+
+[data-theme="dark"] {
+    --background: var(--gray-0);
+    --surface: var(--gray-50);
+    --surface-two: var(--gray-100);
+    --surface-three: var(--gray-200);
+
+    --text: var(--gray-900);
+    --text-muted: var(--gray-600);
+    --text-disabled: var(--gray-500);
+
+    --border: var(--gray-200);
+    --border-light: var(--gray-300);
+}
+
+$breakpoints: (
+    xxs: 4px,
+    xs: 375px,
+    sm: 500px,
+    md: 768px,
+    lg: 1000px,
+    def: 1100px,
+    xl: 1200px,
+    xxl: 1400px,
+);
+
+$spacers: (
+    0: 0,
+    4: 4px,
+    8: 8px,
+    12: 12px,
+    16: 16px,
+    20: 20px,
+    22: 22px,
+    24: 24px,
+    26: 26px,
+    28: 28px,
+    30: 30px,
+    32: 32px,
+    34: 34px,
+    36: 36px,
+    38: 38px,
+    40: 40px,
+    42: 42px,
+    44: 44px,
+    46: 46px,
+    48: 48px,
+    50: 50px,
+    56: 56px,
+    64: 64px,
+    80: 80px,
+    96: 96px,
+);
+
+$spacing-props: (
+    p: padding,
+    pt: padding-top,
+    pe: padding-right,
+    pb: padding-bottom,
+    ps: padding-left,
+    px: (
+        padding-left,
+        padding-right,
+    ),
+    py: (
+        padding-top,
+        padding-bottom,
+    ),
+    m: margin,
+    mt: margin-top,
+    me: margin-right,
+    mb: margin-bottom,
+    ms: margin-left,
+    mx: (
+        margin-left,
+        margin-right,
+    ),
+    my: (
+        margin-top,
+        margin-bottom,
+    ),
+);
+
+$spacing-properties: (
+    spt: padding-top,
+    spb: padding-bottom,
+    smt: margin-top,
+    smb: margin-bottom,
+);
+
+$sizes: (
+    xxl: (
+        xs: 40,
+        sm: 40,
+        md: 50,
+        lg: 50,
+        def: 100,
+        xl: 150,
+        xxl: 192,
+    ),
+    xl: (
+        xs: 40,
+        sm: 40,
+        md: 50,
+        lg: 50,
+        def: 64,
+        xl: 100,
+        xxl: 128,
+    ),
+    lg: (
+        xs: 40,
+        sm: 40,
+        md: 50,
+        lg: 50,
+        def: 64,
+        xl: 96,
+        xxl: 96,
+    ),
+    def: (
+        xs: 40,
+        sm: 40,
+        md: 50,
+        lg: 55,
+        def: 55,
+        xl: 60,
+        xxl: 64,
+    ),
+    md: (
+        xs: 40,
+        sm: 40,
+        md: 48,
+        lg: 48,
+        def: 48,
+        xl: 48,
+        xxl: 48,
+    ),
+    sm: (
+        xs: 38,
+        sm: 38,
+        md: 38,
+        def: 38,
+        lg: 38,
+        xl: 38,
+        xxl: 38,
+    ),
+    xs: (
+        xs: 24,
+        sm: 24,
+        md: 24,
+        def: 24,
+        lg: 24,
+        xl: 24,
+        xxl: 24,
+    ),
+    xxs: (
+        xs: 16,
+        sm: 16,
+        md: 16,
+        def: 16,
+        lg: 16,
+        xl: 16,
+        xxl: 16,
+    ),
+);
+
+$gap-values: (
+    4,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22,
+    24,
+    26,
+    28,
+    30,
+    32,
+    34,
+    36,
+    38,
+    40,
+    42,
+    44,
+    46,
+    48
+);
+
+$gap-utilities: (
+    "gap": gap,
+    "row-gutter": row-gap,
+    "column-gutter": column-gap,
+);
+
+$letter-spacing: (
+    none: 0,
+    xs: 0.25px,
+    sm: 0.5px,
+    md: 1px,
+    lg: 1.5px,
+    xl: 2px,
+    xxl: 3px,
+    wide: 4px,
+);
+
+$shadows: (
+    xs: 0 1px 2px rgba(0, 0, 0, 0.05),
+    sm: 0 2px 4px rgba(0, 0, 0, 0.08),
+    md: 0 4px 8px rgba(0, 0, 0, 0.12),
+    lg: 0 8px 16px rgba(0, 0, 0, 0.16),
+    xl: 0 12px 24px rgba(0, 0, 0, 0.2),
+    none: none,
+);
+
+$text-alignments: (
+    left: left,
+    center: center,
+    right: right,
+    justify: justify,
+    start: start,
+    end: end,
+);
+
+$font-weights: (
+    thin: 100,
+    extra-light: 200,
+    light: 300,
+    regular: 400,
+    medium: 500,
+    semi-bold: 600,
+    bold: 700,
+    extra-bold: 800,
+    black: 900,
+);
+$font-weights: (
+    100: 100,
+    200: 200,
+    300: 300,
+    400: 400,
+    500: 500,
+    600: 600,
+    700: 700,
+    800: 800,
+    900: 900,
+);
+
+$displays: (
+    none: none,
+    block: block,
+    inline: inline,
+    inline-block: inline-block,
+    flex: flex,
+    inline-flex: inline-flex,
+    grid: grid,
+);
+
+$base-family: "Poppins", sans-serif;
+$heading: "League Gothic", sans-serif;
+
+$z-header: 1300;
+$z-sidebar: 1050;
+$z-modal: 1310;
+
