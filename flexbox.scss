@@ -1,0 +1,165 @@
+@use "sass:map";
+@use "./variable" as *;
+
+// ========================================
+// Maps
+// ========================================
+
+$display-flex: (
+    flex: flex,
+    inline-flex: inline-flex,
+);
+
+$flex-direction: (
+    row: row,
+    column: column,
+    row-reverse: row-reverse,
+    column-reverse: column-reverse,
+);
+
+$flex-wrap: (
+    wrap: wrap,
+    nowrap: nowrap,
+    wrap-reverse: wrap-reverse,
+);
+
+$justify-content: (
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    between: space-between,
+    around: space-around,
+    evenly: space-evenly,
+);
+
+$align-items: (
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    baseline: baseline,
+    stretch: stretch,
+);
+
+$align-content: (
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    between: space-between,
+    around: space-around,
+    evenly: space-evenly,
+    stretch: stretch,
+);
+
+$align-self: (
+    auto: auto,
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    baseline: baseline,
+    stretch: stretch,
+);
+
+// ========================================
+// Utility Generator
+// ========================================
+
+@mixin generate-flex-utilities($infix) {
+    // Display
+    @each $name, $value in $display-flex {
+        .d#{$infix}-#{$name} {
+            display: $value;
+        }
+    }
+
+    // Direction
+    @each $name, $value in $flex-direction {
+        .flex#{$infix}-#{$name} {
+            flex-direction: $value;
+        }
+    }
+
+    // Wrap
+    @each $name, $value in $flex-wrap {
+        .flex#{$infix}-#{$name} {
+            flex-wrap: $value;
+        }
+    }
+
+    // Justify Content
+    @each $name, $value in $justify-content {
+        .justify-content#{$infix}-#{$name} {
+            justify-content: $value;
+        }
+    }
+
+    // Align Items
+    @each $name, $value in $align-items {
+        .align-items#{$infix}-#{$name} {
+            align-items: $value;
+        }
+    }
+
+    // Align Content
+    @each $name, $value in $align-content {
+        .align-content#{$infix}-#{$name} {
+            align-content: $value;
+        }
+    }
+
+    // Align Self
+    @each $name, $value in $align-self {
+        .align-self#{$infix}-#{$name} {
+            align-self: $value;
+        }
+    }
+
+    // Order
+    @for $i from 0 through 12 {
+        .order#{$infix}-#{$i} {
+            order: $i;
+        }
+    }
+
+    .order#{$infix}-first {
+        order: -1;
+    }
+
+    .order#{$infix}-last {
+        order: 13;
+    }
+
+    // Flex Grow
+    @for $i from 0 through 1 {
+        .flex-grow#{$infix}-#{$i} {
+            flex-grow: $i;
+        }
+    }
+
+    // Flex Shrink
+    @for $i from 0 through 1 {
+        .flex-shrink#{$infix}-#{$i} {
+            flex-shrink: $i;
+        }
+    }
+}
+
+// ========================================
+// Generate Responsive Classes
+// ========================================
+
+@each $bp, $width in $breakpoints {
+    // Replace deprecated if() function
+    $infix: "";
+
+    @if $bp != xs {
+        $infix: "-#{$bp}";
+    }
+
+    @if $width == 0 {
+        @include generate-flex-utilities($infix);
+    } @else {
+        @media (min-width: $width) {
+            @include generate-flex-utilities($infix);
+        }
+    }
+}
