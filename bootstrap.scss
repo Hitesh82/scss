@@ -1,0 +1,238 @@
+@use "sass:map";
+@use "sass:math";
+@use "./variable" as *;
+
+// ==================================================
+// Settings
+// ==================================================
+
+$media-type: min !default; // min | max
+
+$columns: 12;
+
+$gutters: (
+    0: 0,
+    1: 4px,
+    2: 8px,
+    3: 16px,
+    4: 24px,
+    5: 30px,
+);
+
+$container-gutter: map.get($gutters, 5);
+
+// ==================================================
+// Media Query Mixin
+// ==================================================
+
+@mixin breakpoint($width) {
+    @media (#{$media-type}-width: $width) {
+        @content;
+    }
+}
+
+// ==================================================
+// Container
+// ==================================================
+
+.container {
+    width: 100%;
+    //max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: math.div($container-gutter, 2);
+
+    @each $bp, $width in $breakpoints {
+        @if $width != 0 {
+            @include breakpoint($width) {
+                max-width: $width;
+            }
+        }
+    }
+}
+
+// ==================================================
+// Row
+// ==================================================
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-inline: math.div($container-gutter, -2);
+
+    > * {
+        width: 100%;
+        padding-inline: math.div($container-gutter, 2);
+    }
+}
+
+// ==================================================
+// Gutter Utilities
+// ==================================================
+
+// Default gutters
+@each $key, $gutter in $gutters {
+    .g-#{$key} {
+        margin-inline: math.div($gutter, -2);
+
+        > * {
+            padding-inline: math.div($gutter, 2);
+        }
+    }
+}
+
+// Responsive gutters
+@each $bp, $width in $breakpoints {
+    @if $width != 0 {
+        @include breakpoint($width) {
+            @each $key, $gutter in $gutters {
+                .g-#{$bp}-#{$key} {
+                    margin-inline: math.div($gutter, -2);
+
+                    > * {
+                        padding-inline: math.div($gutter, 2);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ==================================================
+// Default Columns
+// ==================================================
+
+@for $i from 1 through $columns {
+    .col-#{$i} {
+        flex: 0 0 math.percentage(math.div($i, $columns));
+        max-width: math.percentage(math.div($i, $columns));
+    }
+}
+
+// ==================================================
+// Responsive Columns
+// ==================================================
+
+@each $bp, $width in $breakpoints {
+    @if $width != 0 {
+        @include breakpoint($width) {
+            @for $i from 1 through $columns {
+                .col-#{$bp}-#{$i} {
+                    flex: 0 0 math.percentage(math.div($i, $columns));
+                    max-width: math.percentage(math.div($i, $columns));
+                }
+            }
+        }
+    }
+}
+
+.col-auto {
+    flex: 0 0 auto;
+    width: auto;
+}
+@each $bp, $width in $breakpoints {
+    $infix: "";
+
+    @if $bp != xs {
+        $infix: "-#{$bp}";
+    }
+
+    @include breakpoint($width) {
+        .col#{$infix}-auto {
+            flex: 0 0 auto;
+            width: auto;
+        }
+    }
+}
+
+@mixin row-cols($count) {
+    flex: 0 0 math.percentage(math.div(1, $count));
+    max-width: math.percentage(math.div(1, $count));
+}
+
+//@include row-cols(3);
+
+@mixin media-breakpoint-up($value) {
+    // If value is a breakpoint name, get value from map
+    @if map.has-key($breakpoints, $value) {
+        $min: map.get($breakpoints, $value);
+
+        @if $min == 0 {
+            @content;
+        } @else {
+            @media (min-width: $min) {
+                @content;
+            }
+        }
+    }
+
+    // Otherwise use custom value directly
+    @else {
+        @media (min-width: $value) {
+            @content;
+        }
+    }
+}
+
+// @include media-breakpoint-up(md) {
+//
+// }
+// @include media-breakpoint-up(850px) {
+//
+// }
+
+@mixin media-breakpoint-down($value) {
+    // Breakpoint name: md, lg, xl, etc.
+    @if map.has-key($breakpoints, $value) {
+        $max: map.get($breakpoints, $value);
+
+        @if $max != 0 {
+            @media (max-width: ($max)) {
+                @content;
+            }
+        }
+    }
+
+    // Custom value: 850px, 1024px, etc.
+    @else {
+        @media (max-width: ($value)) {
+            @content;
+        }
+    }
+}
+
+// @include media-breakpoint-down(md) {
+//
+// }
+// @include media-breakpoint-down(850px) {
+//
+// }
+
+@mixin media-breakpoint-between($min-value, $max-value) {
+    $min: null;
+    $max: null;
+
+    // Get min value
+    @if map.has-key($breakpoints, $min-value) {
+        $min: map.get($breakpoints, $min-value);
+    } @else {
+        $min: $min-value;
+    }
+
+    // Get max value
+    @if map.has-key($breakpoints, $max-value) {
+        $max: map.get($breakpoints, $max-value);
+    } @else {
+        $max: $max-value;
+    }
+
+    @media (min-width: $min) and (max-width: $max) {
+        @content;
+    }
+}
+// @include media-breakpoint-between(md, lg) {
+//     display: block;
+// }
+// @include media-breakpoint-between(md, 1100px) {
+//     // 768px to 1099.98px
+// }
