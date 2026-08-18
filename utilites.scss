@@ -1,0 +1,193 @@
+@use "sass:map";
+@use "sass:meta";
+@use "sass:color";
+@use "./variable" as *;
+
+@each $utility, $property in $gap-utilities {
+    // Default classes
+    @each $value in $gap-values {
+        .#{$utility}-#{$value} {
+            #{$property}: #{$value}px;
+        }
+    }
+
+    // Responsive classes
+    @each $bp, $width in $breakpoints {
+        @if $width != 0 {
+            @media (min-width: map.get($breakpoints, $bp)) {
+                @each $value in $gap-values {
+                    .#{$utility}-#{$bp}-#{$value} {
+                        #{$property}: #{$value}px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Default classes text align
+@each $name, $value in $text-alignments {
+    .text-#{$name} {
+        text-align: $value;
+    }
+}
+
+// text alignment classes
+@each $bp, $width in $breakpoints {
+    @media (min-width: $width) {
+        @each $name, $value in $text-alignments {
+            .text-#{$bp}-#{$name} {
+                text-align: $value;
+            }
+        }
+    }
+}
+
+// Base classes
+@each $prefix, $property in $spacing-props {
+    @each $size, $value in $spacers {
+        .#{$prefix}-#{$size} {
+            @if meta.type-of($property) == "list" {
+                @each $prop in $property {
+                    #{$prop}: $value;
+                }
+            } @else {
+                #{$property}: $value;
+            }
+        }
+    }
+}
+
+// Responsive classes
+@each $bp, $width in $breakpoints {
+    @media (min-width: $width) {
+        @each $prefix, $property in $spacing-props {
+            @each $size, $value in $spacers {
+                .#{$prefix}-#{$bp}-#{$size} {
+                    @if meta.type-of($property) == "list" {
+                        @each $prop in $property {
+                            #{$prop}: $value;
+                        }
+                    } @else {
+                        #{$property}: $value;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// section padding margin
+
+@each $prefix, $property in $spacing-properties {
+    @each $size-name, $breakpoint-values in $sizes {
+        .#{$prefix}-#{$size-name} {
+            @each $bp, $value in $breakpoint-values {
+                @if $bp == xs {
+                    @if meta.type-of($property) == "list" {
+                        @each $prop in $property {
+                            #{$prop}: #{$value}px;
+                        }
+                    } @else {
+                        #{$property}: #{$value}px;
+                    }
+                } @else {
+                    @media (min-width: map.get($breakpoints, $bp)) {
+                        @if meta.type-of($property) == "list" {
+                            @each $prop in $property {
+                                #{$prop}: #{$value}px;
+                            }
+                        } @else {
+                            #{$property}: #{$value}px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// font weight
+
+@each $name, $value in $font-weights {
+    .fw-#{$name} {
+        font-weight: $value;
+    }
+}
+
+// Default utilities
+@each $name, $value in $displays {
+    .d-#{$name} {
+        display: $value;
+    }
+}
+
+// Responsive utilities
+@each $bp, $width in $breakpoints {
+    @if $bp != xs {
+        @media (min-width: map.get($breakpoints, $bp)) {
+            @each $name, $value in $displays {
+                .d-#{$bp}-#{$name} {
+                    display: $value;
+                }
+            }
+        }
+    }
+}
+
+// $spacing-properties: (
+//     p: padding,
+//     pt: padding-top,
+//     pr: padding-right,
+//     pb: padding-bottom,
+//     pl: padding-left,
+//     px: (
+//         padding-left,
+//         padding-right,
+//     ),
+//     py: (
+//         padding-top,
+//         padding-bottom,
+//     ),
+//     m: margin,
+//     mt: margin-top,
+//     mr: margin-right,
+//     mb: margin-bottom,
+//     ml: margin-left,
+//     mx: (
+//         margin-left,
+//         margin-right,
+//     ),
+//     my: (
+//         margin-top,
+//         margin-bottom,
+//     ),
+// );
+
+// @each $prefix, $property in $spacing-properties {
+//     @each $size-name, $breakpoint-values in $sizes {
+//         .#{$prefix}-#{$size-name} {
+//             @each $bp, $value in $breakpoint-values {
+//                 @if $bp == xs {
+//                     @if meta.type-of($property) == "list" {
+//                         @each $prop in $property {
+//                             #{$prop}: #{$value}px;
+//                         }
+//                     } @else {
+//                         #{$property}: #{$value}px;
+//                     }
+//                 } @else {
+//                     @media (min-width: map.get($breakpoints, $bp)) {
+//                         @if meta.type-of($property) == "list" {
+//                             @each $prop in $property {
+//                                 #{$prop}: #{$value}px;
+//                             }
+//                         } @else {
+//                             #{$property}: #{$value}px;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
